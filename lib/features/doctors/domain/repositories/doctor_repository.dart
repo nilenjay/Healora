@@ -1,4 +1,4 @@
-import '../data/models/doctor.dart';
+import '../../data/models/doctor.dart';
 
 abstract class DoctorRepository {
   Future<List<Doctor>> getDoctors();

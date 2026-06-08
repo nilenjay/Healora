@@ -1,4 +1,4 @@
-import '../data/models/appointment.dart';
+import '../../data/models/appointment.dart';
 
 abstract class AppointmentRepository {
   Future<List<Appointment>> getAppointments();
