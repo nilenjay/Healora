@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/widgets/doctor_card.dart';
 import '../../../doctors/presentation/bloc/doctor_bloc.dart';
 import '../../../doctors/presentation/bloc/doctor_event.dart';
 import '../../../doctors/presentation/bloc/doctor_state.dart';
@@ -177,72 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: state.doctors.length,
                     itemBuilder: (context, index) {
-                      final doc = state.doctors[index];
-                      return Card(
-                        margin: const EdgeInsets.only(bottom: AppSpacing.md),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.grey.shade200),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(AppSpacing.md),
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 32,
-                                backgroundColor: Colors.grey.shade200,
-                                backgroundImage: const AssetImage('assets/images/doctor_placeholder.png'),
-                              ),
-                              const SizedBox(width: AppSpacing.md),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            doc.name,
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Icon(Icons.star, color: Colors.teal, size: 16),
-                                            const SizedBox(width: 4),
-                                            Text(doc.rating.toString(), style: const TextStyle(fontWeight: FontWeight.w600)),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      '\${doc.specialization} • \${doc.hospital}',
-                                      style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
-                                    ),
-                                    const SizedBox(height: 8),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey.shade100,
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: Text(
-                                        'NEXT AVAIL: \${doc.availableSlots.isNotEmpty ? doc.availableSlots.first : "N/A"}',
-                                        style: TextStyle(color: Colors.grey.shade700, fontSize: 11, fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                      return DoctorCard(doctor: state.doctors[index]);
                     },
                   );
                 }
