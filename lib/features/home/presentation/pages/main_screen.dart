@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../appointments/presentation/pages/my_appointments_screen.dart';
+import '../../../profile/presentation/pages/profile_screen.dart';
+import '../../../search/presentation/pages/search_screen.dart';
 import 'home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -22,8 +24,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const MyAppointmentsScreen(),
-    const Center(child: Text('Search Screen')),
-    const Center(child: Text('Profile Screen')),
+    const SearchScreen(),
+    const ProfileScreen(),
   ];
 
   @override
