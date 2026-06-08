@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
-        context.go('/home'); // Or /login if auth is needed first
+        context.go('/home');
       }
     });
   }
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Icon(
-                Icons.favorite_rounded, // Temporary logo
+                Icons.favorite_rounded,
                 size: 64,
                 color: Theme.of(context).colorScheme.primary,
               ),

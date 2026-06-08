@@ -63,26 +63,30 @@ class DoctorCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '\${doctor.specialization} • \${doctor.hospital}',
+                      '${doctor.specialization} • ${doctor.hospital}',
                       style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
                     ),
                     const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Text(
-                            'NEXT AVAIL: \${doctor.availableSlots.isNotEmpty ? doctor.availableSlots.first : "N/A"}',
-                            style: TextStyle(color: Colors.grey.shade700, fontSize: 11, fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              'NEXT AVAIL: ${doctor.availableSlots.isNotEmpty ? doctor.availableSlots.first : "N/A"}',
+                              style: TextStyle(color: Colors.grey.shade700, fontSize: 11, fontWeight: FontWeight.bold),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
+                        const SizedBox(width: 8),
                         Text(
-                          '\$\${doctor.fee}',
+                          '\$${doctor.fee}',
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.bold,
