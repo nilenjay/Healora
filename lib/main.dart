@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'core/routes/app_router.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/presentation/pages/home_screen.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,12 +15,11 @@ class HealoraApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Healora',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-
-      home: const HomeScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }
