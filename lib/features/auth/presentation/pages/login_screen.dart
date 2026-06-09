@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/widgets/primary_button.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,15 +29,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 40),
-                  // Placeholder for Logo/Icon
-                  Container(
-                    width: 64,
-                    height: 64,
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade50,
+                  // Logo
+                  Center(
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        AppAssets.logo,
+                        width: 64,
+                        height: 64,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    child: const Icon(Icons.add_circle, color: Colors.blue, size: 32),
                   ),
                   const SizedBox(height: 24),
                   Text(

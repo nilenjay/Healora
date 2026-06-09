@@ -16,7 +16,7 @@ class LocalDoctorRepository implements DoctorRepository {
       "experience": "15+ Years",
       "rating": 4.9,
       "fee": 150,
-      "imageUrl": "assets/images/doctor_placeholder.png",
+      "imageUrl": "assets/images/male_doctor1.png",
       "availableSlots": ["09:00 AM", "10:30 AM", "02:00 PM"]
     },
     {
@@ -27,7 +27,7 @@ class LocalDoctorRepository implements DoctorRepository {
       "experience": "10+ Years",
       "rating": 4.8,
       "fee": 120,
-      "imageUrl": "assets/images/doctor_placeholder.png",
+      "imageUrl": "assets/images/female_doctor1.png",
       "availableSlots": ["11:00 AM", "01:00 PM", "04:30 PM"]
     },
     {
@@ -38,7 +38,7 @@ class LocalDoctorRepository implements DoctorRepository {
       "experience": "12+ Years",
       "rating": 4.7,
       "fee": 200,
-      "imageUrl": "assets/images/doctor_placeholder.png",
+      "imageUrl": "assets/images/female_doctor2.png",
       "availableSlots": ["08:30 AM", "03:00 PM"]
     },
     {
@@ -49,7 +49,7 @@ class LocalDoctorRepository implements DoctorRepository {
       "experience": "8+ Years",
       "rating": 4.6,
       "fee": 90,
-      "imageUrl": "assets/images/doctor_placeholder.png",
+      "imageUrl": "assets/images/male_doctor2.png",
       "availableSlots": ["10:00 AM", "12:00 PM", "05:00 PM"]
     }
   ]

@@ -75,7 +75,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                         children: [
                           Icon(Icons.star, color: Colors.orange.shade400, size: 18),
                           const SizedBox(width: 4),
-                          Text('\${widget.doctor.rating} Rating', style: const TextStyle(fontWeight: FontWeight.w600)),
+                          Text('${widget.doctor.rating} Rating', style: const TextStyle(fontWeight: FontWeight.w600)),
                         ],
                       ),
                     ],
