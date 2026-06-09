@@ -36,15 +36,15 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
             Row(
               children: [
                 Hero(
-                  tag: 'doctor_image_\${widget.doctor.id}',
+                  tag: 'doctor_image_${widget.doctor.id}',
                   child: Container(
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(AppRadius.lg),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/doctor_placeholder.png'),
+                      image: DecorationImage(
+                        image: AssetImage(widget.doctor.imageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -129,7 +129,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
             ),
             const SizedBox(height: AppSpacing.sm),
             Text(
-              '\${widget.doctor.name} is a highly experienced \${widget.doctor.specialization} at \${widget.doctor.hospital}. Dedicated to providing excellent patient care.',
+              '${widget.doctor.name} is a highly experienced ${widget.doctor.specialization} at ${widget.doctor.hospital}. Dedicated to providing excellent patient care.',
               style: TextStyle(color: Colors.grey.shade600, height: 1.5),
             ),
             
@@ -199,7 +199,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 children: [
                   const Text('Consultation Fee', style: TextStyle(color: Colors.grey)),
                   Text(
-                    '\$\${widget.doctor.fee}',
+                    '\$${widget.doctor.fee}',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

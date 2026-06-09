@@ -11,6 +11,7 @@ class Appointment extends Equatable {
   final String date;
   final String time;
   final String status;
+  final String doctorImageUrl;
 
   const Appointment({
     required this.id,
@@ -23,6 +24,7 @@ class Appointment extends Equatable {
     required this.date,
     required this.time,
     required this.status,
+    this.doctorImageUrl = 'assets/images/male_doctor1.png',
   });
 
   factory Appointment.fromJson(Map<String, dynamic> json) {
@@ -37,6 +39,7 @@ class Appointment extends Equatable {
       date: json['date'],
       time: json['time'],
       status: json['status'],
+      doctorImageUrl: json['doctorImageUrl'] ?? 'assets/images/male_doctor1.png',
     );
   }
 
@@ -52,6 +55,7 @@ class Appointment extends Equatable {
       'date': date,
       'time': time,
       'status': status,
+      'doctorImageUrl': doctorImageUrl,
     };
   }
 
@@ -66,6 +70,7 @@ class Appointment extends Equatable {
     String? date,
     String? time,
     String? status,
+    String? doctorImageUrl,
   }) {
     return Appointment(
       id: id ?? this.id,
@@ -78,9 +83,10 @@ class Appointment extends Equatable {
       date: date ?? this.date,
       time: time ?? this.time,
       status: status ?? this.status,
+      doctorImageUrl: doctorImageUrl ?? this.doctorImageUrl,
     );
   }
 
   @override
-  List<Object?> get props => [id, doctorId, doctorName, patientName, patientPhone, patientAge, patientGender, date, time, status];
+  List<Object?> get props => [id, doctorId, doctorName, patientName, patientPhone, patientAge, patientGender, date, time, status, doctorImageUrl];
 }

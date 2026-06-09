@@ -6,11 +6,15 @@ import '../theme/app_radius.dart';
 class AppointmentCard extends StatelessWidget {
   final Appointment appointment;
   final VoidCallback? onCancel;
+  final VoidCallback? onDelete;
+  final VoidCallback? onReschedule;
 
   const AppointmentCard({
     super.key,
     required this.appointment,
     this.onCancel,
+    this.onDelete,
+    this.onReschedule,
   });
 
   @override
@@ -33,7 +37,7 @@ class AppointmentCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 24,
                   backgroundColor: Colors.grey.shade200,
-                  backgroundImage: const AssetImage('assets/images/doctor_placeholder.png'),
+                  backgroundImage: AssetImage(appointment.doctorImageUrl),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
@@ -109,7 +113,7 @@ class AppointmentCard extends StatelessWidget {
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {}, // View Details placeholder
+                      onPressed: onReschedule,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Colors.white,
@@ -121,6 +125,23 @@ class AppointmentCard extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ] else if (isCancelled && onDelete != null) ...[
+              const SizedBox(height: AppSpacing.md),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: onDelete,
+                  icon: const Icon(Icons.delete_outline, size: 20),
+                  label: const Text('Delete Appointment'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.grey.shade700,
+                    side: BorderSide(color: Colors.grey.shade300),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.md),
+                    ),
+                  ),
+                ),
               ),
             ],
           ],

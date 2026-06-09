@@ -10,6 +10,8 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     on<LoadAppointments>(_onLoadAppointments);
     on<BookAppointment>(_onBookAppointment);
     on<CancelAppointment>(_onCancelAppointment);
+    on<DeleteAppointment>(_onDeleteAppointment);
+    on<RescheduleAppointment>(_onRescheduleAppointment);
   }
 
   Future<void> _onLoadAppointments(LoadAppointments event, Emitter<AppointmentState> emit) async {
@@ -41,6 +43,28 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
       emit(AppointmentLoaded(appointments));
     } catch (e) {
       emit(AppointmentError('Failed to cancel appointment: \$e'));
+    }
+  }
+
+  Future<void> _onDeleteAppointment(DeleteAppointment event, Emitter<AppointmentState> emit) async {
+    emit(AppointmentLoading());
+    try {
+      await appointmentRepository.deleteAppointment(event.appointmentId);
+      final appointments = await appointmentRepository.getAppointments();
+      emit(AppointmentLoaded(appointments));
+    } catch (e) {
+      emit(AppointmentError('Failed to delete appointment: \$e'));
+    }
+  }
+
+  Future<void> _onRescheduleAppointment(RescheduleAppointment event, Emitter<AppointmentState> emit) async {
+    emit(AppointmentLoading());
+    try {
+      await appointmentRepository.rescheduleAppointment(event.appointmentId, event.newTime);
+      final appointments = await appointmentRepository.getAppointments();
+      emit(AppointmentLoaded(appointments));
+    } catch (e) {
+      emit(AppointmentError('Failed to reschedule appointment: \$e'));
     }
   }
 }

@@ -52,6 +52,7 @@ class _AppointmentBookingScreenState extends State<AppointmentBookingScreen> {
         date: 'Today', // Simulated date based on requirements
         time: widget.slotTime,
         status: 'Confirmed',
+        doctorImageUrl: widget.doctor.imageUrl,
       );
 
       context.read<AppointmentBloc>().add(BookAppointment(appointment));
@@ -91,7 +92,7 @@ class _AppointmentBookingScreenState extends State<AppointmentBookingScreen> {
                     const SizedBox(width: AppSpacing.sm),
                     Expanded(
                       child: Text(
-                        'Booking appointment with \${widget.doctor.name} at \${widget.slotTime}',
+                        'Booking appointment with ${widget.doctor.name} at ${widget.slotTime}',
                         style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
                       ),
                     ),

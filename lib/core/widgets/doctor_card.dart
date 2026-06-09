@@ -29,7 +29,7 @@ class DoctorCard extends StatelessWidget {
               CircleAvatar(
                 radius: 32,
                 backgroundColor: Colors.grey.shade200,
-                backgroundImage: const AssetImage('assets/images/doctor_placeholder.png'),
+                backgroundImage: AssetImage(doctor.imageUrl),
               ),
               const SizedBox(width: AppSpacing.md),
               Expanded(

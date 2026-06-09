@@ -47,4 +47,28 @@ class LocalAppointmentRepository implements AppointmentRepository {
       await prefs.setString(_storageKey, data);
     }
   }
+
+  @override
+  Future<void> deleteAppointment(String id) async {
+    final appointments = await getAppointments();
+    appointments.removeWhere((a) => a.id == id);
+    
+    final prefs = await _getPrefs();
+    final String data = json.encode(appointments.map((a) => a.toJson()).toList());
+    await prefs.setString(_storageKey, data);
+  }
+
+  @override
+  Future<void> rescheduleAppointment(String id, String newTime) async {
+    final appointments = await getAppointments();
+    final index = appointments.indexWhere((a) => a.id == id);
+    
+    if (index != -1) {
+      appointments[index] = appointments[index].copyWith(time: newTime);
+      
+      final prefs = await _getPrefs();
+      final String data = json.encode(appointments.map((a) => a.toJson()).toList());
+      await prefs.setString(_storageKey, data);
+    }
+  }
 }
